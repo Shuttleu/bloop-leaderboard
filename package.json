@@ -8,16 +8,27 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.15.5",
     "@mui/material": "latest",
+    "axios": "^1.6.5",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^6.21.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "latest",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "latest",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "latest",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "latest",
     "vite": "latest"
   }
 }

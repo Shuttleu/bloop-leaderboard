@@ -1,18 +1,16 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import AppDrawer from './Pages/AppDrawer';
-import User, {userLoader} from './Pages/User';
-import Users, {usersLoader} from './Pages/Users';
-import ErrorPage from './Pages/ErrorPage';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import * as React from "react";
+import Container from "@mui/material/Container";
+import AppDrawer from "./Components/AppDrawer";
+import User, { userLoader } from "./Components/User";
+import Users, { usersLoader } from "./Components/Users";
+import ErrorPage from "./Components/ErrorPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Leaderboard, { leaderboardLoader } from "./Components/Leaderboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppDrawer/>,
+    element: <AppDrawer />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -21,26 +19,29 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users/>,
+        element: <Users />,
         loader: usersLoader,
       },
       {
         path: "user/:id",
-        element: <User/>,
+        element: <User />,
         loader: userLoader,
       },
       {
         path: "leader",
-        element: <div>Leaderboard</div>,
+        element: <Leaderboard />,
+        loader: leaderboardLoader,
       },
     ],
-  }
+  },
 ]);
 
 export default function App() {
   return (
-    <Container maxWidth="xl">
-          <RouterProvider router={router} />
-    </Container>
+    <React.StrictMode>
+      <Container maxWidth="xl">
+        <RouterProvider router={router} />
+      </Container>
+    </React.StrictMode>
   );
 }
