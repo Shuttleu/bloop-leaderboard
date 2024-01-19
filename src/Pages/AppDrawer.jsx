@@ -92,11 +92,7 @@ const menuItems = [
   ['Index', <HomeIcon/>, '/'], 
   ['Users', <PersonIcon />, '/users'], 
   ['Leaderboard', <LeaderboardIcon/>, '/leader']
-]
-
-const menuItemClicked = (item) => {
-
-}
+];
 
 export default function AppDrawer(props) {
   const theme = useTheme();
@@ -141,8 +137,8 @@ export default function AppDrawer(props) {
         <Divider />
         <List>
           {menuItems.map((item) => (
-            <Link>
               <ListItem key={item[0]} disablePadding sx={{ display: 'block' }}>
+                <Link to={item[2]}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -161,14 +157,14 @@ export default function AppDrawer(props) {
                   </ListItemIcon>
                   <ListItemText primary={item[0]} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
+                </Link>
               </ListItem>
-            </Link>
           ))}
         </List> 
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        {props.children}
+        <Outlet />
       </Box>
     </Box>
   );
