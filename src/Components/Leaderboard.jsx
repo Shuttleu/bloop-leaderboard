@@ -12,13 +12,11 @@ import {
 
 import Paper from "@mui/material/Paper";
 
-import axios from "axios";
 export async function leaderboardLoader() {
   let users = [];
   try {
-    const req = await axios.get("http://localhost:3000/users/achievements");
-    users = req.data;
-    console.log(users);
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/users/achievements`);
+    users = await req.json();
   } catch (error) {}
   return { users };
 }
@@ -28,7 +26,6 @@ const getStats = (user) => {
   let lastAchievement = null;
   user.Achievements.forEach((achievement) => {
     points += achievement.points;
-    console.log(achievement.UserAchievements.createdAt);
     if (
       lastAchievement == null ||
       lastAchievement < achievement.UserAchievements.createdAt
@@ -47,7 +44,6 @@ const calculteScores = (users) => {
 
 export default function Leaderboard() {
   const { users } = useLoaderData();
-  console.log(users);
 
   return (
     <>
@@ -71,7 +67,6 @@ export default function Leaderboard() {
                 return user2.stats.points - user1.stats.points;
               })
               .map((user) => {
-                console.log(user);
                 return (
                   <TableRow>
                     <TableCell>{user.username}</TableCell>

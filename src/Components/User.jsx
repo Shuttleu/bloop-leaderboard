@@ -11,13 +11,11 @@ import {
   TableContainer,
 } from "@mui/material";
 
-import axios from "axios";
 export async function userLoader({ params }) {
   let user = {};
   try {
-    const req = await axios.get(`http://localhost:3000/user/${params.id}`);
-    user = req.data;
-    console.log(user);
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/user/${params.id}`);
+    user = await req.json();
   } catch (error) {}
   return { user };
 }
@@ -32,7 +30,6 @@ const points = (user) => {
 
 export default function User(props) {
   const { user } = useLoaderData();
-  console.log(user);
 
   return (
     <>

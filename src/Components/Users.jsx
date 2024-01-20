@@ -8,14 +8,12 @@ import {
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 
-import axios from "axios";
 
 export async function usersLoader() {
   let users = [];
   try {
-    const req = await axios.get("http://localhost:3000/users");
-    users = req.data;
-    console.log(users);
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/users`);
+    users = await req.json();
   } catch (error) {}
   return { users };
 }
