@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import AppDrawer from "./Components/AppDrawer";
 import User, { userLoader } from "./Components/User";
 import Users, { usersLoader } from "./Components/Users";
+import Home from "./Components/Home";
 import ErrorPage from "./Components/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Leaderboard, { leaderboardLoader } from "./Components/Leaderboard";
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div>Home</div>,
+        element: <Home />,
       },
       {
         path: "users",
