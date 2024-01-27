@@ -139,7 +139,7 @@ export default function AppDrawer(props) {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              Scotiacon Bloop Leaderboard
+              Scotiacon Bark Leaderboard
             </Typography>
           </Toolbar>
         </AppBar>
