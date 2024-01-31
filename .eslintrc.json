@@ -7,6 +7,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "parserOptions": {
@@ -16,7 +17,7 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {},
   "settings": {
     "react": {
