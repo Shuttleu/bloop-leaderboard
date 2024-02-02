@@ -5,6 +5,11 @@ import { ThemeProvider } from "@mui/material/styles";
 import App from "./App";
 import theme from "./theme";
 import "./style.css";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "@fontsource/material-icons";
 
 const rootElement = document.getElementById("root");
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
