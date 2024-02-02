@@ -42,6 +42,16 @@ export default function Users() {
       />
       <List>
         {users
+          .sort((a: User, b: User) => {
+            const nameA = a.username.toLowerCase();
+            const nameB = b.username.toLowerCase();
+            if (nameA < nameB) {
+              return -1;
+            } else if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          })
           .filter((user) => {
             return user.username.toLowerCase().includes(search.toLowerCase());
           })

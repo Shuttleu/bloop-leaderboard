@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -19,6 +19,7 @@ type Stats = {
 type CalculatedStats = {
   username: string;
   stats: Stats;
+  id: number;
 };
 
 export async function leaderboardLoader() {
@@ -58,6 +59,7 @@ const calculteScores = (users: User[]) => {
     const calculated: CalculatedStats = {
       username: user.username,
       stats: getStats(user),
+      id: user.id
     };
     return calculated;
   });
@@ -65,6 +67,8 @@ const calculteScores = (users: User[]) => {
 
 export default function Leaderboard() {
   const { users } = useLoaderData() as { users: User[] };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -89,7 +93,11 @@ export default function Leaderboard() {
               })
               .map((user, i) => {
                 return (
-                  <TableRow key={i}>
+                  <TableRow key={i}
+                    onClick={() => {
+                      navigate(`/user/${user.id}`);
+                    }}
+                  >
                     <TableCell>{user.username}</TableCell>
                     <TableCell align="right">{user.stats.points}</TableCell>
                   </TableRow>
