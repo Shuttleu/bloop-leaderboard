@@ -30,34 +30,40 @@ const points = (user: UserModel) => {
   return points;
 };
 
+type UserDetails = {
+  user: UserModel;
+  bloopCount: number;
+}
+
 export default function User() {
-  const { user } = useLoaderData() as { user: UserModel };
+  const { user } = useLoaderData() as { user: UserDetails };
 
   return (
     <>
-      {user ? (
+      {user && user.user ? (
         <>
           <Typography variant="h4" gutterBottom align="center">
-            {user.username} - {user.cardId}
+            {user.user.username} - {user.user.cardId}
           </Typography>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
                   <TableCell align="left">Achievement</TableCell>
                   <TableCell>Description</TableCell>
-                  <TableCell align="right">Points: {points(user)}</TableCell>
+                  <TableCell align="right">Barks: {user.bloopCount}</TableCell>
+                  <TableCell align="right">Points: {points(user.user)}</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {user.Achievements.map((achievement, i) => {
+                {user.user.Achievements.map((achievement, i) => {
                   return (
                     <TableRow key={i}>
                       <TableCell align="left">{achievement.name}</TableCell>
                       <TableCell>
                         {achievement.desc}
                       </TableCell>
-                      <TableCell align="right">{achievement.points}</TableCell>
+                      <TableCell colSpan={2} align="right">{achievement.points}</TableCell>
                     </TableRow>
                   );
                 })}
