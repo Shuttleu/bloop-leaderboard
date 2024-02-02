@@ -1,6 +1,6 @@
 import { Achievement } from "./Achievement";
 
-export default interface User {
+export interface User {
   id: number;
   username: string;
   uid: string;

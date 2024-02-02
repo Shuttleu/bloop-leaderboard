@@ -7,7 +7,7 @@ import {
   TableRow,
   TableContainer,
 } from "@mui/material";
-import User from "../Models/User";
+import { User } from "../Models/User";
 
 import Paper from "@mui/material/Paper";
 

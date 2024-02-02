@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { useState } from "react";
-import User from "../Models/User";
+import { User } from "../Models/User";
 
 export async function usersLoader() {
   let users = [];

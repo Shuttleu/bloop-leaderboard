@@ -9,7 +9,7 @@ import {
   TableRow,
   TableContainer,
 } from "@mui/material";
-import User from "../Models/User";
+import { User as UserModel } from "../Models/User";
 
 export async function userLoader(id: string | undefined) {
   let user = {};
@@ -22,7 +22,7 @@ export async function userLoader(id: string | undefined) {
   return { user };
 }
 
-const points = (user: User) => {
+const points = (user: UserModel) => {
   let points = 0;
   user.Achievements.forEach((achievement) => {
     points += achievement.points;
@@ -31,7 +31,7 @@ const points = (user: User) => {
 };
 
 export default function User() {
-  const { user } = useLoaderData() as { user: User };
+  const { user } = useLoaderData() as { user: UserModel };
 
   return (
     <>
@@ -55,7 +55,7 @@ export default function User() {
                     <TableRow key={i}>
                       <TableCell align="left">{achievement.name}</TableCell>
                       <TableCell>
-                        {achievement.hidden ? "Secret" : achievement.desc}
+                        {achievement.desc}
                       </TableCell>
                       <TableCell align="right">{achievement.points}</TableCell>
                     </TableRow>
