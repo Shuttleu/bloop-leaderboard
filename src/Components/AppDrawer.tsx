@@ -25,7 +25,18 @@ import ListItemText from "@mui/material/ListItemText";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
-import { Outlet, To, useNavigate } from "react-router-dom";
+import { Outlet, To, useLoaderData, useNavigate } from "react-router-dom";
+
+export async function bloopLoader() {
+  let bloops = 0;
+  try {
+    const req = await fetch(`${import.meta.env.VITE_API_URL}/barks`);
+    bloops = await req.json();
+  } catch (error) {
+    return { bloops };
+  }
+  return { bloops };
+}
 
 type MenuItem = {
   path: To;
@@ -112,6 +123,7 @@ const menuItems: MenuItem[] = [
 
 export default function AppDrawer() {
   const [open, setOpen] = React.useState(false);
+  const { bloops } = useLoaderData() as { bloops: number };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -149,8 +161,11 @@ export default function AppDrawer() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap component="div">
+            <Typography variant="h6" noWrap component="div" sx={{flex: 1}}>
               Scotiacon Bark Leaderboard
+            </Typography>
+            <Typography variant="h6" noWrap component="div">
+              Current Barks: {bloops.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </Typography>
           </Toolbar>
         </AppBar>

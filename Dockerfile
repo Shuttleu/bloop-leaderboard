@@ -1,8 +1,9 @@
 FROM node:21 AS compiler
 RUN mkdir /app
 WORKDIR /app
-ADD . .
+ADD package* .
 RUN npm install
+ADD . .
 RUN npm run build
 
 FROM nginx:alpine

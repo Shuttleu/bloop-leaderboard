@@ -1,6 +1,6 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
-import AppDrawer from "./Components/AppDrawer";
+import AppDrawer, { bloopLoader } from "./Components/AppDrawer";
 import User, { userLoader } from "./Components/User";
 import Users, { usersLoader } from "./Components/Users";
 import Home from "./Components/Home";
@@ -13,6 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppDrawer />,
     errorElement: <ErrorPage />,
+    loader: bloopLoader,
     children: [
       {
         path: "",
